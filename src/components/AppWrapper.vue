@@ -14,13 +14,13 @@
 </script>
 <template>
     <div class="flex w-full h-screen">
-        <div class="m-2 p-3 bg-gray-100 h-[98vh] rounded-2xl min-w-[80px]">
+        <div class="m-2 p-3 bg-gray-100 h-[98vh] rounded-2xl">
             <ul class="space-y-4">
                 <li v-for="(menu, index) in menus" :key="menu.path ?? index">
                     <RouterLink :to="menu.path" class="block">
-                        <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-gray-200 cursor-pointer">
+                        <div class="flex items-center p-3 rounded-2xl hover:bg-gray-200 cursor-pointer">
                             <i :class="[menu.icon, 'text-2xl']" aria-hidden="true" />
-                            <span class="text-lg font-medium">{{ menu.label }}</span>
+                            <!-- <span class="text-lg font-medium">{{ menu.label }}</span> -->
                         </div>
                     </RouterLink>
                 </li>
