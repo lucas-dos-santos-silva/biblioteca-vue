@@ -4,36 +4,33 @@
     import { isArray } from '@/utils/utils.js';
 
     const menus = [
-
         {
-            label: 'Home',
-            icon: 'pi pi-home',
-            path: '/home'
-        },
+            label: 'Livros',
+            icon: 'pi pi-book',
+            path: '/books'
+        }
     ];
 
 </script>
 <template>
-    <div class="flex flex-col w-full h-screen">
-        <div class="w-full p-3 text-3xl border-b-2 h-16 flex items-center">
-            Header
-        </div>
-        <div class="flex h-full">
-            <div class="w-32 border-r-2 h-full px-3 py-4">
-                <ul class="menu space-y-2">
-                    <RouterLink
-                        :to="menu.path"
-                        v-for="menu of menus"
-                    >
-                        <li class="menu-item">
-                            <i :class="menu.icon" />
-                            <span>{{ menu.label }}</span>
-                        </li>
+    <div class="flex w-full h-screen">
+        <div class="m-2 p-3 bg-gray-100 h-[98vh] rounded-2xl min-w-[80px]">
+            <ul class="space-y-4">
+                <li v-for="(menu, index) in menus" :key="menu.path ?? index">
+                    <RouterLink :to="menu.path" class="block">
+                        <div class="flex items-center gap-3 p-3 rounded-2xl hover:bg-gray-200 cursor-pointer">
+                            <i :class="[menu.icon, 'text-2xl']" aria-hidden="true" />
+                            <span class="text-lg font-medium">{{ menu.label }}</span>
+                        </div>
                     </RouterLink>
-                </ul>
-            </div>
-            <div class="p-4 w-full h-full">
-                <RouterView />
+                </li>
+            </ul>
+        </div>
+        <div class="flex h-full w-full">
+            <div class="p-2 w-full h-full">
+                <div class="pt-3 border border-black/10 rounded-2xl px-4 pb-4 max-h-[98vh] overflow-auto">
+                    <RouterView />
+                </div>
             </div>
         </div>
     </div>
@@ -75,31 +72,5 @@
     </Toast>
 </template>
 <style scoped lang="less">
-
-.menu {
-
-    &-item {
-
-        display: flex;
-        align-items: baseline;
-        cursor: pointer;
-        user-select: none;
-        border-radius: .3rem;
-        padding: 8px 2px 0 6px;
-        padding-bottom: 6px;
-        transition-duration: 200ms;
-
-        span {
-
-            margin-left: 3px;
-        }
-
-        &:hover {
-
-            background-color: var(--color-background-inverted);
-            color: var(--color-text-inverted);
-        }
-    }
-}
 
 </style>
