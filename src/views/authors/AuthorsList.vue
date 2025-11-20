@@ -20,9 +20,9 @@ const goToCreate = () => router.push({ name: 'authors.create', params: { id: 'no
     <h1 class="text-2xl font-bold mb-6">Autores</h1>
     <Button label="Novo Autor" icon="pi pi-plus" class="mb-4" @click="goToCreate" />
     <DataTable :value="filteredAuthors" class="w-full" stripedRows>
-      <Column field="id" header="<label for='author-id'>ID</label>" />
-      <Column field="name" header="<label for='author-name'>Nome</label>" />
-      <Column field="birthYear" header="<label for='author-birthYear'>Ano de Nascimento</label>" />
+  <Column field="id" header="ID" ariaHeaderLabel="ID do autor" />
+  <Column field="name" header="Nome" ariaHeaderLabel="Nome do autor" />
+  <Column field="birthYear" header="Ano de Nascimento" ariaHeaderLabel="Ano de nascimento do autor" />
       <Column header="Ações">
         <template #body="slotProps">
           <Button label="Ver" icon="pi pi-eye" @click="goToAuthor(slotProps.data.id)" />

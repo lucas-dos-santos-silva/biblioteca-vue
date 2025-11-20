@@ -20,8 +20,8 @@ const goToCreate = () => router.push({ name: 'publishers.edit', params: { id: 'n
     <h1 class="text-2xl font-bold mb-6">Editoras</h1>
     <Button label="Nova Editora" icon="pi pi-plus" class="mb-4" @click="goToCreate" />
     <DataTable :value="filteredPublishers" class="w-full" stripedRows>
-  <Column field="id" header="<label for='publisher-id'>ID</label>" />
-  <Column field="name" header="<label for='publisher-name'>Nome</label>" />
+  <Column field="id" header="ID" ariaHeaderLabel="ID da editora" />
+  <Column field="name" header="Nome" ariaHeaderLabel="Nome da editora" />
       <Column header="Ações">
         <template #body="slotProps">
           <Button label="Ver" icon="pi pi-eye" @click="goToPublisher(slotProps.data.id)" />

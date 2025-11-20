@@ -29,7 +29,7 @@ const goToEdit = () => router.push({ name: 'authors.edit', params: { id } });
       <Button label="Novo Autor" icon="pi pi-plus" class="mb-6 ml-2" @click="router.push({ name: 'authors.edit', params: { id: 'novo' } })" />
       <h2 class="text-xl font-semibold mb-2">Livros do Autor</h2>
       <DataTable :value="books" class="w-full" stripedRows>
-        <Column field="id" header="<label for='book-id'>ID</label>" />
+  <Column field="id" header="ID" ariaHeaderLabel="ID do livro" />
         <Column field="title" header="Título" />
         <Column field="year" header="Ano" />
       </DataTable>
