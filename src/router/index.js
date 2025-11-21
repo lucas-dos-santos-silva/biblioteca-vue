@@ -14,6 +14,8 @@ const routes = [
     component: () => import('../components/AppWrapper.vue'),
     children: [
 
+      { path: '', redirect: '/books' },
+
       { path: "/books", name: "books.index", component: BooksList },
       { path: "/books/create", name: "books.create", component: BooksCreate },
       { path: "/books/:id", name: "books.show", component: BooksDetails },

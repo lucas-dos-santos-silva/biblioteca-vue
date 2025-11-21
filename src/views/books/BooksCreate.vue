@@ -21,18 +21,18 @@ const form = ref({
     sinopsis: '',
 });
 
-const bookName  = computed(() => "Lucas dos Santos Silva");
+const bookName  = computed(() => form.value.title);
 const bookYear  = computed(() => form.value.year);
-const bookCover  = computed(() => form.value.cover || 'https://via.placeholder.com/150x220?text=Capa+do+Livro');
+const bookCover  = computed(() => form.value.cover );
 
 const bookAuthor  = computed(() => {
     const author = store.getAuthor(form.value.authorId);
-    return author ? author.name : 'Autor não selecionado';
+    return author ? author?.name : '';
 });
 
 const bookEditor  = computed(() => {
     const publisher = store.getPublisher(form.value.publisherId);
-    return publisher ? publisher.name : 'Editora não selecionada';
+    return publisher ? publisher?.name : '';
 });
 
 const errors = ref({});
@@ -134,12 +134,15 @@ const cancel = () => router.push({ name: 'books.index' });
                 </div>
             </div>
         </div>
-        <div class="book-preview border rounded-lg shadow-lg p-4 w-1/3 mx-auto mb-10" :style="{ backgroundImage: `url(${bookCover})` }">
-            <h1 class="text-center text-gray-400 italic">Pré-visualização do Livro</h1>
-
-            <h1 class="text-center text-3xl mt-20">{{  bookName  }}</h1>
-            <h1 class="text-center text-xl mt-5">{{  bookAuthor  }}</h1>
-            <h1 class="text-center content-end text-xl mt-5">{{  bookEditor }}</h1>
+        <div class="book-preview border rounded-lg shadow-lg p-4 w-1/3 mx-auto mb-10 relative" :style="{ backgroundImage: `url(${bookCover})`, backdropFilter: 'blur(1px)', backgroundSize: 'cover', backgroundPosition: 'center' }">
+            <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
+            <div class="relative z-10 p-4">
+                <h1 class="text-center text-gray-100 italic">Pré-visualização do Livro</h1>
+                <h1 class="text-center text-3xl mt-20 text-white drop-shadow-lg">{{  bookName  }}</h1>
+                <h1 class="text-center text-xl mt-5 text-white drop-shadow-lg">{{  bookAuthor  }}</h1>
+                <h1 class="text-center text-xl mt-5 text-white drop-shadow-lg">{{  bookYear  }}</h1>
+                <h1 class="text-center content-end text-xl mt-5 text-white drop-shadow-lg">{{  bookEditor }}</h1>
+            </div>
         </div>
     </div>
 </template>

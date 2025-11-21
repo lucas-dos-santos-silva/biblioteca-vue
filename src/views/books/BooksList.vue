@@ -3,8 +3,6 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Toolbar from 'primevue/toolbar';
 import DataTable from 'primevue/datatable';
-import IconField from 'primevue/iconfield';
-import InputIcon from 'primevue/inputicon';
 import Column from 'primevue/column';
 import Dialog from 'primevue/dialog';
 import { ref, onMounted, computed } from 'vue';
@@ -95,7 +93,6 @@ const onRowClick = (event) => {
             dataKey="id"
             :paginator="true"
             :rows="10"
-            :sortField="'author'"
             :sortOrder="1"
             rowHover
             @row-click="onRowClick"
@@ -107,13 +104,7 @@ const onRowClick = (event) => {
                 <div class="flex flex-wrap gap-2 items-center justify-between">
                     <h4 class="m-0">Lista de Livros</h4>
                     <div class="flex gap-2 items-center">
-                        <IconField>
-                            <InputIcon>
-                                <i class="pi pi-search" />
-                            </InputIcon>
-                            <InputText v-model="titleFilter" placeholder="Buscar título..." />
-                        </IconField>
-
+                        <InputText v-model="titleFilter" placeholder="Buscar título..." />
                         <InputText v-model="authorFilter" placeholder="Buscar autor..." class="ml-2" />
                         <InputText v-model="publisherFilter" placeholder="Buscar editora..." class="ml-2" />
                     </div>
