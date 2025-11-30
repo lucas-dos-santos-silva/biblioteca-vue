@@ -4,6 +4,8 @@ import BooksList from '@/views/books/BooksList.vue';
 import BooksCreate from '@/views/books/BooksCreate.vue';
 import BooksEdit from '@/views/books/BooksEdit.vue';
 import BooksDetails from '@/views/books/BooksDetails.vue';
+import Profile from '@/views/profile/Profile.vue';
+import Settings from '@/views/settings/Settings.vue';
 
 
 const routes = [
@@ -27,6 +29,8 @@ const routes = [
       { path: "/publishers/:id", name: "publishers.show", component: () => import('@/views/publishers/PublishersDetails.vue') },
       { path: "/publishers/:id(edit|novo)", name: "publishers.edit", component: () => import('@/views/publishers/PublishersForm.vue') },
 
+      { path: "/profile", name: "profile", component: () => import('@/views/profile/Profile.vue') },
+      { path: "/settings", name: "settings", component: () => import('@/views/settings/Settings.vue') },
     ]
   },
 

@@ -73,7 +73,7 @@ const onRowClick = (event) => {
 </script>
 <template>
     <div class="flex text-2xl">
-        <span>Livros</span>
+        <span class="dark:text-white text-black">Livros</span>
     </div>
 
     <Toolbar class="mb-6 mt-6">
@@ -83,7 +83,7 @@ const onRowClick = (event) => {
         </template>
     </Toolbar>
 
-    <div>
+    
         <DataTable
             ref="dt"
             scrollable
@@ -111,9 +111,9 @@ const onRowClick = (event) => {
                 </div>
             </template>
 
-            <Column selectionMode="multiple" style="width: 3rem" :exportable="false"></Column>
-            <Column field="id" header="ID" sortable style="min-width: 6rem"></Column>
-            <Column field="title" header="Título" sortable style="min-width: 16rem">
+            <Column selectionMode="multiple" :exportable="false"></Column>
+            <Column field="id" header="ID" sortable></Column>
+            <Column field="title" header="Título" sortable>
                 <template #header>
                     <label for="title">Título</label>
                 </template>
@@ -126,10 +126,10 @@ const onRowClick = (event) => {
                     <label for="cover">Capa</label>
                 </template>
                 <template #body="slotProps">
-                    <img :src="slotProps.data.cover" :alt="slotProps.data.title" class="rounded" style="width: 64px" id="cover" />
+                    <img :src="slotProps.data.cover" :alt="slotProps.data.title" class="rounded max-w-20" id="cover" />
                 </template>
             </Column>
-            <Column field="author" header="Autor" sortable style="min-width: 12rem">
+            <Column field="author" header="Autor" sortable>
                 <template #header>
                     <label for="author">Autor</label>
                 </template>
@@ -137,7 +137,7 @@ const onRowClick = (event) => {
                     {{ slotProps.data.author }}
                 </template>
             </Column>
-            <Column field="publisher" header="Editora" sortable style="min-width: 12rem">
+            <Column field="publisher" header="Editora" sortable>
                 <template #header>
                     <label for="publisher">Editora</label>
                 </template>
@@ -145,12 +145,12 @@ const onRowClick = (event) => {
                     {{ slotProps.data.publisher }}
                 </template>
             </Column>
-            <Column field="year" header="Ano" sortable style="min-width: 6rem">
+            <Column field="year" header="Ano" sortable>
                 <template #header>
                     <label for="year">Ano</label>
                 </template>
             </Column>
-            <Column header="Sinopse" style="min-width: 24rem">
+            <Column header="Sinopse">
                 <template #header>
                     <label for="sinopsis">Sinopse</label>
                 </template>
@@ -158,7 +158,7 @@ const onRowClick = (event) => {
                     {{ slotProps.data.sinopsis ? (slotProps.data.sinopsis.length > 120 ? slotProps.data.sinopsis.slice(0,120) + '...' : slotProps.data.sinopsis) : '' }}
                 </template>
             </Column>
-            <Column :exportable="false" style="min-width: 12rem">
+            <Column :exportable="false" header="Ações">
                 <template #body="slotProps">
                     <Button icon="pi pi-pencil" variant="outlined" rounded class="mr-2" @click.stop.prevent="goToEditBook(slotProps.data.id)" />
                     <Button icon="pi pi-user" variant="outlined" rounded class="mr-2" @click.stop.prevent="goToAuthor(slotProps.data.authorId)" />
@@ -166,7 +166,6 @@ const onRowClick = (event) => {
                 </template>
             </Column>
         </DataTable>
-    </div>
 
     <Dialog v-model:visible="productDialog" header="Detalhes do Livro" :modal="true" :style="{ width: '70rem' }">
         <div v-if="product">
