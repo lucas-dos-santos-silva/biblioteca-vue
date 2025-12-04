@@ -1,0 +1,1 @@
+import{_ as s,c as t,o as c,a as e}from"./index-ZLna2JZK.js";const n={},o={class:"h-screen w-screen flex flex-col items-center justify-center text-5xl"},_=e("span",null,"404",-1),a=e("span",null,"Page not found",-1),r=[_,a];function l(d,f){return c(),t("div",o,r)}const u=s(n,[["render",l]]);export{u as default};
